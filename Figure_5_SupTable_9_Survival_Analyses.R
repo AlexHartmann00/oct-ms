@@ -9,7 +9,7 @@
 # Usual runtime ~= 3 minutes
 
 
-setwd("C:/octms5")
+#setwd("C:/octms5")
 
 #---------------------------------R packages---------------------------------# 
 
@@ -79,7 +79,18 @@ kaplan.meier <- function(survdf,groupvar){
     propsprod <- cumprod(props)
   }
   
-  kmdf <- cbind(survdf,S=S,KMGroup = survdf[,groupvar])
+  kmdf <- cbind(S=S,Time=survdf$Time,KMGroup = survdf[,groupvar])#survdf,
+  kmdf <- as.data.frame(kmdf)
+  
+  kmdf <- rbind.data.frame(
+    kmdf,
+    data.frame(
+      S=c(1,1),
+      Time = c(0,0),
+      KMGroup = c(0,1)
+    )
+  )
+  
   colnames(kmdf)[ncol(kmdf)] <- stringr::str_replace(groupvar,"_Group","")
   return(kmdf)
 }
@@ -299,11 +310,6 @@ data$DMT <- ifelse(data$Therapie %in% c(0,3,13,14,15),0,
                             ifelse(data$Therapie %in% c(10,16,17,6,5),1,
                                    ifelse(data$Therapie %in% c(26,23) | is.na(data$Therapie),NA,2)))
 
-
-#Classification of DMT: 
-#DMT=0 --> no therapy: 0, 3, 13, 14, 15
-#DMT=1 --> low efficacy: 10, 16, 6, 5
-#DMT=2 --> high efficacy: 1, 2, 4, 7, 8, 9, 11, 12, 17, 19, 20, 21, 22, 24, 25
 
 
 # Preprocessing for MRI

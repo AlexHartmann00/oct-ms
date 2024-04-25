@@ -298,11 +298,6 @@ mri_data_long$DMT <- ifelse(mri_data_long$Therapie %in% c(0,3,13,14,15),0,
                             ifelse(mri_data_long$Therapie %in% c(10,16,6,5),1,
                                    ifelse(mri_data_long$Therapie %in% c(26,23) | is.na(mri_data_long$Therapie),NA,2)))
 
-#Classification of DMT: 
-#DMT=0 --> no therapy: 0, 3, 13, 14, 15
-#DMT=1 --> low efficacy: 10, 16, 6, 5
-#DMT=2 --> high efficacy: 1, 2, 4, 7, 8, 9, 11, 12, 17, 19, 20, 21, 22, 24, 25
-
 
 #Create baseline EDSS variable
 if(!("BaseEDSS" %in% colnames(mri_data_long))){
@@ -421,11 +416,6 @@ relapse_data$DMT <- ifelse(relapse_data$Therapie %in% c(0,3,13,14,15),0,
                            ifelse(relapse_data$Therapie %in% c(10,16,6,5),1,
                                   ifelse(relapse_data$Therapie %in% c(26,23) | is.na(relapse_data$Therapie),NA,2)))
 
-#Classification of DMT: 
-#DMT=0 --> no therapy: 0, 3, 13, 14, 15
-#DMT=1 --> low efficacy: 10, 16, 6, 5
-#DMT=2 --> high efficacy: 1, 2, 4, 7, 8, 9, 11, 12, 17, 19, 20, 21, 22, 24, 25
-
 # Generate baseline EDSS column
 if(!("BaseEDSS" %in% colnames(relapse_data))){
   baseline_edss <- numeric(nrow(relapse_data))
@@ -504,11 +494,6 @@ datasets <- list(subset(edss_data,OCT_included==1)
 edss_data$DMT <- ifelse(edss_data$Therapie %in% c(0,3,13,14,15),0,
                            ifelse(edss_data$Therapie %in% c(10,16,6,5),1,
                                   ifelse(edss_data$Therapie %in% c(26,23) | is.na(edss_data$Therapie),NA,2)))
-
-#Classification of DMT: 
-#DMT=0 --> no therapy: 0, 3, 13, 14, 15
-#DMT=1 --> low efficacy: 10, 16, 6, 5
-#DMT=2 --> high efficacy: 1, 2, 4, 7, 8, 9, 11, 12, 17, 19, 20, 21, 22, 24, 25
 
 
 #Get best model for all "participant group" ~ "focal predictor"-combinations
