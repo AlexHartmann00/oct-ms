@@ -1,4 +1,5 @@
 # oct-ms
+##Evolution of retinal degeneration and prediction of disease activity in relapsing and progressive multiple sclerosis
 
 Retinal optical coherence tomography has been identified as biomarker for disease progression in relapsing-remitting multiple sclerosis (RRMS), while the dynamics of retinal atrophy in progressive MS are less clear. We investigated retinal layer thickness changes in 195 RRMS, 125 primary and 87 secondary progressive MS (PPMS, SPMS) patients, and their prognostic value for disease activity.
 
